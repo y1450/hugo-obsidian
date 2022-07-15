@@ -36,7 +36,11 @@ func parse(dir, pathPrefix string) []Link {
 
 		target = processTarget(target)
 		source := processSource(trim(dir, pathPrefix, ".md"))
-
+		if isInternal(target) {
+			relpath := filepath.Join(filepath.Dir(dir), target)
+			relpath = processSource(trim(relpath, pathPrefix, ".md"))
+			target = strings.TrimPrefix(relpath, pathPrefix)
+		}
 		// fmt.Printf("  '%s' => %s\n", source, target)
 		links = append(links, Link{
 			Source: source,
