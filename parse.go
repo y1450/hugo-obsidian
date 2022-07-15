@@ -6,6 +6,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"io/ioutil"
 	"strings"
+	"path/filepath"
 )
 
 // parse single file for links
